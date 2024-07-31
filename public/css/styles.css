@@ -1,0 +1,190 @@
+:root {
+    --primary-font-family: "Nunito", sans-serif;
+    --primary-color: #1BAB58 --secondary-color: #F4F6F6;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-size: 14px;
+    font-family: var(--primary-font-family);
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+#slider-revolution {
+    position: relative;
+
+    #main-menu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 100;
+    }
+
+    .owl-carousel {
+        height: 100vh;
+
+        .owl-stage-outer {
+            height: 100%;
+
+            .owl-stage {
+                height: 100%;
+
+
+                .owl-item.active {
+                    background-color: aqua;
+
+                    .slider-paragragh {
+                        animation: fadeInDown 1s ease-in-out 0.4s;
+                    }
+
+                    .slider-title {
+                        animation: fadeInDown 1s ease-in-out 0.2s;
+                    }
+
+                    .slider-temperature {
+                        animation: fadeInDown 1s ease-in-out 0.6s;
+                    }
+
+                    .slider-button {
+                        animation: fadeInDown 1s ease-in-out 0.8s;
+                    }
+
+                    .slider-background {
+                        animation: fadeIn 1s ease-in-out 0.4s;
+                    }
+                }
+
+                .owl-item {
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    background-origin: border-box;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-position: center;
+
+                    .slider-background {
+                        height: 100%;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        background-origin: border-box;
+                        background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        background-position: center;
+                        background-size: cover;
+                        color: white;
+
+                        @media screen and (max-width: 1024px) {
+                            margin: 0;
+                            max-width: 100%;
+                            padding: 20px;
+                        }
+
+                        /* .slider-spacing {} */
+                    }
+
+                    .slider-background {
+
+                        .slider-info {
+                            .slider-paragragh {
+                                line-height: 29px;
+                                text-transform: capitalize;
+                                font-size: 1.3rem;
+                                font-weight: 400;
+                            }
+
+                            .slider-title {
+                                text-transform: capitalize;
+                                font-size: 5rem;
+                                font-weight: 700;
+                            }
+                        }
+
+                        .slider-temperature {
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: column;
+
+
+                            .slider-text {
+                                text-transform: capitalize;
+                                font-size: 1.2rem;
+                                font-weight: 400;
+                            }
+                        }
+
+                        .slider-button {
+                            height: 61px;
+                            width: 153px;
+                            border-radius: 30px;
+                            background-color: rgba(217, 217, 217, 0.5);
+                            color: white;
+                            text-transform: uppercase;
+                            text-decoration: none;
+                            font-size: 1rem;
+                            font-weight: 700;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            transition: background-color 0.3s, color 0.3s;
+                            cursor: pointer;
+                        }
+
+                        .slider-button:hover {
+                            background-color: white;
+                            color: black;
+                            transition: background-color 0.3s, color 0.3s;
+                        }
+                    }
+                }
+            }
+        }
+
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            left: 34%;
+            font-size: 1rem;
+            color: green;
+        }
+    }
+}
