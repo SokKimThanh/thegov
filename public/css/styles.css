@@ -1,6 +1,80 @@
+/**
+Biến Toàn Cục:
+Font Chính: Nunito với dự phòng là sans-serif.
+Màu Chủ Đạo: #1BAB58 (màu xanh lá).
+Màu Phụ: #F4F6F6 (màu trắng sáng).
+Màu Nền:
+--background-1: #232323 (màu xám đen).
+--background-2: #313131 (màu xám đậm).
+--background-3: rgba(217, 217, 217, 0.5) (màu xám nhạt trong suốt).
+--background-4: #F7F7F7 (màu trắng xám).
+2. Thiết Lập Chung:
+Toàn Bộ Phần Tử:
+
+Không có padding và margin.
+Sử dụng box-sizing: border-box.
+HTML và Body:
+
+Chiều cao và chiều rộng 100%.
+Body:
+
+Cỡ chữ mặc định là 14px, sử dụng font Nunito.
+3. Keyframes Animation:
+fadeInDown: Cho phép phần tử xuất hiện từ trên xuống dưới với độ mờ dần.
+fadeIn: Chuyển đổi độ mờ từ 0 đến 1.
+Cấu Trúc và Phong Cách Slider:
+#slider-revolution: Thiết lập toàn màn hình với chiều cao 100vh, sử dụng
+ owl-carousel để tạo slider.
+
+.owl-stage-outer & .owl-stage: Đảm bảo mỗi slide chiếm toàn bộ chiều cao.
+.owl-item.active: Khi một slide được kích hoạt, áp dụng các hiệu ứng chuyển 
+đổi cho các phần tử bên trong như đoạn văn, tiêu đề, thông tin nhiệt độ, và nút.
+Background: Các slide có hình nền cố định, không lặp lại, căn giữa và phù hợp 
+với kích thước viewport.
+Nội dung Slide:
+
+.slider-paragragh & .slider-title: Văn bản chuyển từ trên xuống và dần dần 
+hiện ra.
+.slider-temperature: Hiển thị thông tin nhiệt độ với hiệu ứng tương tự.
+.slider-button-container: Nút Learn More có góc bo, bán trong suốt với hiệu ứng 
+hover thay đổi màu nền và chữ.
+.owl-nav:
+
+Định vị tuyệt đối trong slider, với các nút điều hướng (.owl-prev và .owl-next)
+ có kích thước lớn và khoảng cách phù hợp giữa các nút.
+5. Thiết Kế Menu Chính:
+#main-menu:
+
+Định vị tuyệt đối với độ rộng 100%.
+.container: Màu nền trắng trên desktop và xám đậm trên mobile.
+.menu-container-mobile: Ẩn trên desktop, hiện trên mobile.
+Menu Intro:
+
+.menu-intro: Nền xám nhạt với màu chữ xám đậm.
+.social-list: Danh sách mạng xã hội hiển thị theo hàng ngang.
+.open-hour-text: Hiển thị thông tin giờ mở cửa.
+.search-container: Khu vực tìm kiếm với nút tìm kiếm và ô nhập liệu, có hiệu
+ ứng chuyển đổi khi nhấn vào.
+6. Responsive Design:
+Truy vấn phương tiện: Đảm bảo giao diện phản hồi với các kích thước màn hình 
+khác nhau, đặc biệt là dưới 1024px và 500px, bao gồm điều chỉnh kích thước chữ, 
+bố cục và vị trí các phần tử.
+Tổng Kết
+CSS này thiết lập một giao diện người dùng phức tạp và phản hồi, với sự chú 
+trọng vào animation và trải nghiệm người dùng. Sự kết hợp của các biến toàn cục,
+ kiểu dáng và hiệu ứng chuyển đổi tạo nên một giao diện hiện đại và hấp dẫn, 
+ đảm bảo tính tương thích trên nhiều thiết bị và kích thước màn hình khác nhau.
+*/
 :root {
     --primary-font-family: "Nunito", sans-serif;
     --primary-color: #1BAB58 --secondary-color: #F4F6F6;
+    --backgroung-1: #232323;
+    --background-2: #313131;
+    --background-3: rgba(217, 217, 217, 0.5);
+    --background-4: #F7F7F7;
+
+    --color-1: rgb(97, 97, 97, .8);
+    --color-2: #F6F6F6;
 }
 
 * {
@@ -48,17 +122,62 @@ body {
     }
 }
 
-#slider-revolution {
-    position: relative;
+/**
+==Tổng quan cấu trúc
+--Container Slider (#slider-revolution)
+Sử dụng .owl-carousel cho chức năng carousel.
+Thiết lập chiều cao toàn màn hình với height: 100vh.
+Chứa các phần tử như các slide, mũi tên điều hướng, và các nội dung khác.
+Các thành phần chính và phong cách
+Chiều cao Carousel và thiết lập sân khấu
 
-    #main-menu {
-        position: absolute;
-        inset: 0;
-        z-index: 100;
-        width: 100%;
-        height: 79px;
-        background: black;
-    }
+height: 100% được thiết lập cho .owl-stage-outer và .owl-stage để đảm bảo mỗi
+ slide chiếm toàn bộ chiều cao của viewport.
+Hiệu ứng Animation cho Slide kích hoạt (.owl-item.active)
+
+Các hiệu ứng animation được áp dụng khi một slide trở nên kích hoạt:
+Đoạn văn (.slider-paragragh): Chuyển từ translateY(-100px) sang translateY(0) 
+và opacity: 1 với độ trễ 0.5s.
+Tiêu đề (.slider-title): Hiệu ứng tương tự nhưng với độ trễ ngắn hơn (0.6s).
+Thông tin nhiệt độ (.slider-temperature): Chuyển với độ trễ 1.5s.
+Container nút (.slider-button-container): Chuyển với độ trễ 1s.
+Phong cách nền cho từng Slide (.owl-item)
+
+Nội dung được căn giữa bằng cách sử dụng display: flex; justify-content: center;
+ align-items: center;.
+Các thuộc tính nền như background-origin, background-repeat, background-attachment,
+ background-position, và background-size được thiết lập để đảm bảo hiển thị hình 
+ ảnh đúng cách.
+Phong cách nội dung bên trong Slide (.slider-background)
+
+--Thông tin văn bản (.slider-info)
+Đoạn văn (.slider-paragragh): Phong cách bao gồm chiều cao dòng, kích thước chữ,
+ và chuyển đổi cho animation. Các truy vấn phương tiện điều chỉnh kích thước chữ cho màn hình nhỏ hơn.
+Tiêu đề (.slider-title): Văn bản lớn, đậm với kích thước chữ đáp ứng và 
+chuyển đổi.
+Thông tin nhiệt độ (.slider-temperature)
+Được bố trí thành cột, với các chuyển đổi để xuất hiện mượt mà.
+Nút (.slider-button-container và .slider-button)
+Nút có góc bo, bán trong suốt với hiệu ứng hover để thay đổi nền và màu chữ.
+Mũi tên điều hướng (.owl-nav)
+
+Được định vị tuyệt đối trong slider.
+Phong cách cho các nút mũi tên bao gồm kích thước, padding, và điều chỉnh vị 
+trí theo đáp ứng.
+Mũi tên (.owl-prev và .owl-next) có các phần tử span được căn chỉnh.
+Truy vấn phương tiện
+Cho màn hình với max-width 1024px và 500px:
+Điều chỉnh bao gồm thay đổi kích thước chữ, định vị lại các phần tử, và đảm bảo 
+bố cục nhất quán trên các thiết bị nhỏ hơn.
+Kết luận
+CSS này thiết lập một slider toàn màn hình với các chuyển đổi animation, các 
+điều chỉnh thiết kế đáp ứng và điều hướng tùy chỉnh. Việc sử dụng các truy vấn
+ phương tiện đảm bảo rằng bố cục thích ứng với các kích thước màn hình khác 
+ nhau, và các animation mang lại trải nghiệm người dùng năng động và hấp dẫn.
+*/
+
+/* slider revolution full man hinh và kéo qua được */
+#slider-revolution {
 
     .owl-carousel {
         height: 100vh;
@@ -69,7 +188,8 @@ body {
             .owl-stage {
                 height: 100%;
 
-
+                /* thiết lập hiệu ứng animation cho mỗi 
+                slider kích hoạt lượt kéo */
                 .owl-item.active {
                     .slider-background {
                         .slider-info {
@@ -103,6 +223,7 @@ body {
                     }
                 }
 
+                /* Thiết lập phong cách background cho mỗi hình ảnh item */
                 .owl-item {
                     height: 100%;
                     display: flex;
@@ -114,6 +235,7 @@ body {
                     background-attachment: fixed;
                     background-position: center;
 
+                    /* Thiết lập slider background cơ bản */
                     .slider-background {
                         height: 100%;
                         width: 100vw;
@@ -133,16 +255,22 @@ body {
                             max-width: 100%;
                             padding: 20px;
                         }
-                    }
 
-                    .slider-background {
                         .slider-container {
                             @media screen and (max-width: 500px) {
                                 width: 80%;
                             }
                         }
+                    }
 
+                    /* Thiết lập kiểu dáng cho 
+                    chữ và animation bên trong slider background */
+                    .slider-background {
+
+                        /* Cài đặt kiểu dáng của đoạn văn và tiêu đề */
                         .slider-info {
+
+                            /* Cài đặt kiểu dáng cho đoạn văn */
                             .slider-paragragh {
                                 line-height: 29px;
                                 text-transform: capitalize;
@@ -159,6 +287,7 @@ body {
                                 opacity 0.4s;
                             }
 
+                            /* Cài đặt kiểu dáng cho tiêu đề */
                             .slider-title {
                                 text-transform: capitalize;
                                 font-size: 5rem;
@@ -174,6 +303,7 @@ body {
                             }
                         }
 
+                        /* Cài đặt kiểu dáng cho Thông tin nhiệt độ */
                         .slider-temperature {
                             display: flex;
                             justify-content: center;
@@ -194,6 +324,7 @@ body {
                             }
                         }
 
+                        /* cài đặt kiểu dáng cho nút learn more */
                         .slider-button-container {
                             opacity: 0;
                             transform: translateY(-100px);
@@ -203,7 +334,7 @@ body {
                                 height: 61px;
                                 width: 153px;
                                 border-radius: 30px;
-                                background-color: rgba(217, 217, 217, 0.5);
+                                background-color: var(--background-3);
                                 color: white;
                                 text-transform: uppercase;
                                 text-decoration: none;
@@ -229,8 +360,8 @@ body {
             }
         }
 
+        /* thiết kế mũi tên kéo qua màn hình */
         .owl-nav {
-            width: 100%;
             position: absolute;
             font-size: 2rem;
             color: white;
@@ -254,17 +385,193 @@ body {
                 }
             }
 
+            /* vị trí khác đi khi màn hình lớn hơn 1024px */
             top: 81%;
             left: calc(15% - 10px);
 
+            /* vị trí khác đi khi màn hình nhỏ hơn 1024px */
             @media screen and (max-width: 1024px) {
                 left: 21px;
             }
 
+            /* vị trí khác đi khi màn hình nhỏ hơn 500px */
             @media screen and (max-width: 500px) {
                 top: 91%;
                 left: 21px;
             }
         }
     }
+}
+
+/* MAIN MENU DESKTOP*/
+section#main-menu {
+    /* Thiết lập sự thay đổi ở màn hình desktop và mobile */
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+
+    /* Cài đặt màu nền, kích thước màn hình desktop và mobile */
+    .container {
+        background: white;
+
+        @media screen and (max-width: 1024px) {
+            background-color: var(--background-2);
+            color: white;
+            margin: 0;
+            max-width: 100%;
+        }
+    }
+
+    /* Ẩn menu mobile khi ở màn hình desktop */
+    .menu-container-mobile {
+        display: none;
+    }
+
+    /* Ẩn menu desktop khi ở màn hình mobile */
+    @media screen and (max-width: 1024px) {
+        .menu-container-mobile {
+            display: block;
+
+        }
+
+        .menu-container-desktop,
+        .menu-intro {
+            display: none;
+        }
+    }
+
+    /* Tạo kiểu cho menu intro */
+    .menu-intro {
+        color: var(--color-1);
+        background: var(--background-4);
+
+        .social-list {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0;
+        }
+
+        /* Cài đặt kiểu dáng thông tin giờ mở cửa */
+        .open-hour-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+            p {
+                margin: 0;
+                line-height: 1.5rem;
+                font-size: 1rem;
+                font-weight: 400;
+            }
+        }
+
+        /* Cài đặt kiểu dáng khu vực tìm kiếm */
+        .search-container {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            height: 100%;
+            padding: 0;
+            position: relative;
+            color: black;
+
+            /* cài đặt kiểu dáng nút tìm kiếm */
+            .search-icon {
+                height: 64px;
+                width: 64px;
+                border: none;
+                outline: 0;
+                font-size: 2rem;
+                font-weight: 700;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Nút tìm kiếm khi nhấn vào */
+            .search-icon.active {
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+            }
+
+
+            /* tạo kiểu dáng cho ô tìm kiếm */
+            .search-area {
+                background-color: white;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+                form {
+                    height: 91px;
+                    width: 309px;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    input {
+                        height: 50px;
+                        width: 270px;
+                        background-color: var(--color-2);
+                        border: 0;
+                        outline: 0;
+                        border-radius: 0;
+                    }
+                }
+
+                /* cài đặt kiểu dáng nút tìm kiếm và nút tắt ô tìm kiếm  */
+                .btn-search,
+                .btn-x {
+                    height: 64px;
+                    width: 64px;
+                    border: none;
+                    outline: 0;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                    position: absolute;
+                }
+
+                /* Nút tắt ô tìm kiếm khi kích hoạt */
+                .btn-x.active {
+                    opacity: 1;
+                    transition: all 0.3s ease-in-out;
+                    display: block;
+                }
+
+                /* Cài đặt kiểu dáng nút tắt ô tìm kiếm */
+                .btn-x {
+                    right: -15px;
+                    top: -60px;
+                    display: none;
+                }
+
+                /* cài đặt kiểu dáng nút tìm kiếm */
+                .btn-search {
+                    right: 0;
+                    margin-right: 10px;
+                }
+            }
+
+            .search-area {
+                position: absolute;
+                transform: translate(-14px, 71px);
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .search-area.show {
+                opacity: 1;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+
+    /* Tạo kiểu cho menu container desktop */
+
 }
