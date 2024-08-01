@@ -77,6 +77,7 @@ body {
                                 transform: translateY(0);
                                 opacity: 1;
                                 transition: all 0.8s;
+                                transition-delay: 0.5s;
                             }
 
                             .slider-title {
@@ -90,12 +91,14 @@ body {
                             transform: translateY(0);
                             opacity: 1;
                             transition: all 0.8s;
+                            transition-delay: 1.5s;
                         }
 
                         .slider-button-container {
                             transform: translateY(0);
                             opacity: 1;
                             transition: all 0.8s;
+                            transition-delay: 1s;
                         }
                     }
                 }
