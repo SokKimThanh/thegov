@@ -53,11 +53,11 @@ body {
 
     #main-menu {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
+        inset: 0;
         z-index: 100;
+        width: 100%;
+        height: 79px;
+        background: black;
     }
 
     .owl-carousel {
@@ -116,7 +116,7 @@ body {
 
                     .slider-background {
                         height: 100%;
-                        width: 100%;
+                        width: 100vw;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -136,16 +136,27 @@ body {
                     }
 
                     .slider-background {
+                        .slider-container {
+                            @media screen and (max-width: 500px) {
+                                width: 80%;
+                            }
+                        }
 
                         .slider-info {
                             .slider-paragragh {
                                 line-height: 29px;
                                 text-transform: capitalize;
                                 font-size: 1.3rem;
+
+                                @media screen and (max-width: 1024px) {
+                                    font-size: 1.1rem;
+                                }
+
                                 font-weight: 400;
                                 transform: translateY(-100px);
                                 opacity: 0;
-                                transition: transform 0.3s, opacity 0.4s;
+                                transition: transform 0.3s,
+                                opacity 0.4s;
                             }
 
                             .slider-title {
@@ -155,6 +166,11 @@ body {
                                 transform: translateY(-100px);
                                 opacity: 0;
                                 transition: transform 0.3s, opacity 0.4s;
+
+                                @media screen and (max-width: 1024px) {
+                                    font-size: 3rem;
+                                    text-wrap: wrap;
+                                }
                             }
                         }
 
@@ -169,6 +185,11 @@ body {
                             .slider-text {
                                 text-transform: capitalize;
                                 font-size: 1.2rem;
+
+                                @media screen and (max-width: 1024px) {
+                                    font-size: 1rem;
+                                }
+
                                 font-weight: 400;
                             }
                         }
@@ -209,11 +230,41 @@ body {
         }
 
         .owl-nav {
+            width: 100%;
             position: absolute;
-            top: 50%;
-            left: 34%;
-            font-size: 1rem;
-            color: green;
+            font-size: 2rem;
+            color: white;
+            padding: 4px 8px;
+            margin: 0 8px;
+            display: flex;
+            /* khoang trong giua 2 mui ten */
+            gap: 10px;
+
+            .owl-prev,
+            .owl-next {
+                border: 0;
+                outline: 0;
+
+                span {
+                    width: 64px;
+                    height: 64px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            top: 81%;
+            left: calc(15% - 10px);
+
+            @media screen and (max-width: 1024px) {
+                left: 21px;
+            }
+
+            @media screen and (max-width: 500px) {
+                top: 91%;
+                left: 21px;
+            }
         }
     }
 }
