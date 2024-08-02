@@ -1,7 +1,7 @@
 /**
 Biến Toàn Cục:
 Font Chính: Nunito với dự phòng là sans-serif.
-Màu Chủ Đạo: #1BAB58 (màu xanh lá).
+Màu Chủ Đạo: #00AA55 (màu xanh lá).
 Màu Phụ: #F4F6F6 (màu trắng sáng).
 Màu Nền:
 --background-1: #232323 (màu xám đen).
@@ -67,11 +67,13 @@ trọng vào animation và trải nghiệm người dùng. Sự kết hợp củ
 */
 :root {
     --primary-font-family: "Nunito", sans-serif;
-    --primary-color: #1BAB58 --secondary-color: #F4F6F6;
+    --primary-color: #00AA55;
+    --secondary-color: #010101;
     --backgroung-1: #232323;
     --background-2: #313131;
     --background-3: rgba(217, 217, 217, 0.5);
     --background-4: #F7F7F7;
+    --background-5: #e5e5e5e5;
 
     --color-1: rgb(97, 97, 97, .8);
     --color-2: #F6F6F6;
@@ -574,4 +576,241 @@ section#main-menu {
 
     /* Tạo kiểu cho menu container desktop */
 
+}
+
+
+/* MENU DESKTOP CONTAINER */
+/**
+CSS Styling
+CSS thiết lập các kiểu dáng cho menu, bao gồm cả phần tử cha và phần tử con:
+
+Màu sắc và bố cục: Các màu sắc và bố cục như background-color, color, và 
+font-size được định nghĩa thông qua các biến CSS như var(--background-1),
+ var(--background-4), var(--primary-color), và var(--secondary-color).
+
+Menu container: section.menu-container-desktop định nghĩa bố cục cho toàn bộ 
+khu vực menu, bao gồm logo và các mục menu.
+
+Danh sách menu và các item:
+
+.menu-list-container chứa các item trong menu, được căn giữa.
+.menu-list là một danh sách không thứ tự (ul) chứa các mục menu (li.menu-item).
+.menu-link là các liên kết trong các mục menu, có hiệu ứng chuyển đổi màu sắc 
+khi hover và khi được click.
+.menu-item.no-children .menu-link::after: ẩn mũi tên chỉ xuống nếu item không 
+có submenu.
+Hiệu ứng hover:
+
+Khi hover vào li.menu-item, các liên kết (.menu-link) thay đổi màu sắc.
+Khi hover vào một mục có submenu, submenu (.sub-menu) được hiển thị với hiệu ứng chuyển động từ từ.
+Active State: Màu sắc của các mục menu thay đổi khi mục đó ở trạng thái "active".
+*/
+section.menu-container-desktop {
+    .logo-link-image-container {
+        padding: 0;
+        background-color: var(--background-1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .logo-link-image {
+            display: block;
+        }
+    }
+
+    .menu-list-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* cấu hình kiểu dáng cho danh sách menu */
+        ul.menu-list {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-right-width: 1px;
+            border-right-style: solid;
+            border-right-color: var(--background-5);
+
+            /* cài đặt tắt mũi tên cho danh sách không có submenu */
+            .menu-item.no-children .menu-link::after {
+                display: none;
+            }
+
+            /* Cài đặt mặc định cho menu */
+            li.menu-item {
+                position: relative;
+                cursor: pointer;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                min-height: 64px;
+
+                /* Màu mặc định cho các liên kết */
+                a.menu-link {
+                    position: relative;
+                    display: flex;
+                    text-decoration: none;
+                    color: var(--secondary-color);
+                    transition: all 0.3s ease-in-out;
+                    width: 100%;
+                }
+
+                a.menu-link::after {
+                    display: flex;
+                    bottom: calc(50% - 14px);
+                    padding-left: 10px;
+                    content: '\F22C';
+                    font-family: 'bootstrap-icons';
+                }
+            }
+
+            /* Cài đặt mặc định cho thành phần submenu */
+            /* Đảm bảo không tô màu các menu con khi không hover */
+            ul.sub-menu {
+                display: none;
+
+                /* Kiểu dáng menu cấp 1 */
+                li.menu-item {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+
+                    /* Màu mặc định cho các liên kết trong menu con */
+                    a.menu-link {
+                        color: var(--secondary-color);
+                        justify-content: space-between;
+                        padding: 10px 20px;
+                        height: 64px;
+                        align-items: center;
+                    }
+
+                    /* 
+                    -- Kiểu dáng mặc định cho mặt nạ 
+                    -- Mặt nạ chưa rơi từ trên xuống 
+                    */
+                    .overlay {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        transform: translateY(-100%);
+                        opacity: 0;
+                        background-color: #00aa55;
+                        transition: all 0.2s ease-in-out;
+                        pointer-events: none;
+
+                        /* Ngăn không cho overlay chặn sự kiện chuột */
+                    }
+                }
+            }
+
+
+            /* Kiểu dáng khi hover vào submenu */
+            li.menu-item ul.sub-menu {
+
+                /* Màu khi hover vào sub-menu */
+                li.menu-item:hover>a.menu-link {
+                    color: white;
+                }
+
+                /* mặt nạ rớt xuống chậm khi rê vào sub menu active*/
+                li.menu-item:hover>.overlay {
+                    opacity: 1;
+                    transform: translateY(0%);
+                    transition: all 0.2s ease-in-out;
+                }
+
+                /* Xoay icon khi hover vào sub-menu */
+                li.menu-item:hover>a.menu-link::after {
+                    transform: rotate(-90deg);
+                    transition: transform 0.2s ease-in-out;
+                }
+            }
+
+            /* ------------------------------------------------- */
+            /* EVENTS SUB-MENU */
+            /* Chỉ áp dụng màu mặc định khi hover vào menu-item */
+            /*  */
+            /* ------------------------------------------------- */
+            /* Mặc định màu chữ của menu-item cha và sub-menu */
+            .menu-item>a.menu-link {
+                color: var(--secondary-color);
+            }
+
+            /* Màu của menu-item cha khi active */
+            .menu-item.active>a.menu-link {
+                color: #00aa55;
+                /* Xanh lá cây */
+                background-color: #fff;
+                /* Nền trắng */
+            }
+
+            /* Màu của sub-menu-item khi active */
+            .menu-item .sub-menu .menu-item.active>a.menu-link {
+                color: #fff;
+                /* Màu chữ trắng */
+                background-color: #00aa55;
+                /* Nền xanh lá cây */
+            }
+
+            /* Màu nền và chữ khi hover vào sub-menu-item */
+            .menu-item .sub-menu .menu-item:hover>a.menu-link {
+                color: #fff;
+                /* Màu chữ trắng */
+                background-color: #00aa55;
+                /* Nền xanh lá cây */
+            }
+
+            /* Màu nền và chữ mặc định của sub-menu-item */
+            .menu-item .sub-menu .menu-item>a.menu-link {
+                color: var(--secondary-color);
+                background-color: transparent;
+            }
+
+
+            /* Chỉ khi nào hover vào menu thì mới thực thi */
+            li.menu-item:hover {
+
+                /* danh muc cap 1 */
+                ul.sub-menu.show {
+                    list-style-type: none;
+                    position: absolute;
+                    background-color: var(--background-4);
+                    color: #010101;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0;
+                    top: 100%;
+                    left: 0%;
+                    width: 300px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    transform: translateY(0);
+                    translate: all 0.3s ease-in-out;
+                }
+
+                /* danh muc cap 2 */
+                ul.sub-menu.show .sub-menu.show {
+                    position: absolute;
+                    background-color: var(--background-4);
+                    color: #010101;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0;
+                    top: 0%;
+                    left: 100%;
+                    z-index: 3;
+                    transition: background-color 0.5s linear;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
 }
