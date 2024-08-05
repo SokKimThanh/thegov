@@ -80,22 +80,25 @@ Kiểm tra và xử lý các mục không có submenu:
 Nếu một menu-item không có submenu, nó sẽ được thêm class no-children, 
 và mũi tên chỉ xuống (.menu-link::after) sẽ bị ẩn.
  */
+/**
+ * UPDATE:05/08/2024
+ * Giữ lại tính năng phân loại menu: Thêm class no-children 
+ * vào các mục menu không có sub-menu.
+ * Xử lý sự kiện hover: Hiển thị sub-menu khi hover vào mục menu.
+ * Cập nhật trạng thái active: Đảm bảo rằng khi một mục 
+ * menu được chọn, nó và tất cả các mục menu cha của nó 
+ * đều được thêm class active.
+ */
 const menuItems = document.querySelectorAll('.menu-item');
 
 menuItems.forEach(item => {
-    // Kiểm tra nếu menu-item không có menu con
     const subMenu = item.querySelector('.sub-menu');
-    // Tìm phần tử overlay
 
-
-    // Nếu menu-item không có menu con, thêm class no-children vào nó
     if (!subMenu) {
         item.classList.add('no-children');
     }
 
-    // Xử lý sự kiện click
     item.addEventListener('click', (e) => {
-        // Ngăn chặn sự kiện click lan truyền lên các phần tử cha
         e.stopPropagation();
 
         // Loại bỏ lớp active từ tất cả menu items
@@ -106,19 +109,19 @@ menuItems.forEach(item => {
         // Thêm lớp active cho menu item được click
         item.classList.add('active');
 
+        // Thêm lớp active cho tất cả các mục cha
+        let parentItem = item.closest('.menu-item');
+        while (parentItem) {
+            parentItem.classList.add('active');
+            parentItem = parentItem.parentElement.closest('.menu-item');
+        }
+
         // Nếu mục menu cha có sub-menu, ngăn không đóng nó
         if (subMenu) {
             subMenu.classList.add('show');
         }
-
-        // Kiểm tra xem menu-item có cha không và thêm lớp active cho nó
-        let parentItem = item.closest('.menu-item');
-        if (parentItem) {
-            parentItem.classList.add('active');
-        }
     });
 
-    // Xử lý sự kiện hover để hiển thị sub menu
     item.addEventListener('mouseenter', () => {
         if (subMenu) {
             subMenu.classList.add('show');
@@ -133,6 +136,7 @@ menuItems.forEach(item => {
 });
 
 
+
 /**
  * Lập trình tắt/mở menu mobile (menu-bar-icon)
  */
@@ -142,8 +146,13 @@ const menuBarIcon = document.querySelector('.menu-bar-icon');
 menuBarIcon.addEventListener('click', () => {
     // tìm thấy menu overlay 
     const menuOverlay = document.querySelector('.menu-overlay');
-    const menuContainerSlider = document.querySelector('.menu-container-slider')
+    const menuContainerSlider = document.querySelector('.menu-container-slider');
+
     // active menu overlay
     menuOverlay.classList.add('active');
     menuContainerSlider.classList.add('active');
+    menuOverlay.addEventListener('click', ()=>{
+        menuOverlay.classList.remove('active');
+        menuContainerSlider.classList.remove('active');
+    });
 });
