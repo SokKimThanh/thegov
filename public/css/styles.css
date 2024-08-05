@@ -77,7 +77,7 @@ trọng vào animation và trải nghiệm người dùng. Sự kết hợp củ
 
     --color-1: rgb(97, 97, 97, .8);
     --color-2: #F6F6F6;
-    --min-height-menu-link: 50px;
+    --min-height-menu-link: 64px;
 }
 
 * {
@@ -833,8 +833,6 @@ section.menu-container-desktop {
 section.menu-container-mobile {
     max-height: 64px;
 
-
-
     .menu-bar-mobile {
         display: flex;
         justify-content: space-around;
@@ -866,11 +864,11 @@ section.menu-container-mobile {
 
     .menu-overlay {
         position: absolute;
+        top: 0;
         background-color: rgba(14, 13, 13, 0.8);
         height: 100vh;
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
-        z-index: -1;
     }
 
     .menu-overlay.active {
@@ -884,12 +882,113 @@ section.menu-container-mobile {
         transition: transform 0.3s ease-in-out;
         background-color: black;
         width: 80%;
+        position: absolute;
+        top: 0;
     }
 
     .menu-container-slider.active {
         transform: translateX(0%);
         transition: transform 0.3s ease-in-out;
         transition-delay: 0.5s;
-        z-index: 1;
+        overflow-y: auto;
+    }
+
+    .logo-link-image {
+        display: block;
+        width: 256px;
+    }
+
+    .menu-list-container {
+
+        /* cấu hình kiểu dáng cho danh sách menu */
+        ul.menu-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            list-style: none;
+            width: 100%;
+            padding: 0 0 0 20px;
+            font-size: 1rem;
+            font-weight: 600;
+
+            /* cài đặt tắt mũi tên cho danh sách không có submenu */
+            .menu-item.no-children .menu-link::after {
+                display: none;
+            }
+
+            /* Cài đặt mặc định cho menu */
+            li.menu-item {
+                width: 100%;
+
+                /* Chiều cao của item cao quá so với màn hình của laptop nên chỉnh lại cho phù hợp */
+                @media screen and (min-width: 1440px) {}
+
+                /* Màu mặc định cho các liên kết */
+                a.menu-link {
+                    text-decoration: none;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                a.menu-link::after {
+                    content: '\F22C';
+                    font-family: 'bootstrap-icons';
+                    transform: rotate(-90deg);
+                }
+            }
+
+            /* Cài đặt mặc định cho thành phần submenu */
+            /* Đảm bảo không tô màu các menu con khi không hover */
+            ul.sub-menu {
+                display: none;
+                transition: display 1s ease-in-out;
+            }
+
+
+            /* ------------------------------------------------- */
+            /* EVENTS  SUB-MENU */
+            /* Chỉ áp dụng màu mặc định khi hover vào menu-item */
+            /*  */
+            /* ------------------------------------------------- */
+            /* Mặc định màu chữ của menu-item cha và sub-menu */
+            .menu-item>a.menu-link {
+                color: white
+            }
+
+            /* Màu của menu-item cha khi active */
+            .menu-item.active>a.menu-link {
+                color: var(--primary-color);
+            }
+
+            /* Màu của sub-menu-item khi active */
+            .menu-item .sub-menu .menu-item.active>a.menu-link {
+                color: var(--primary-color);
+            }
+
+
+            /* Chỉ khi nào hover vào menu thì mới thực thi */
+            li.menu-item:hover {
+
+                /* danh muc cap 1 */
+                ul.sub-menu.show {
+                    display: flex;
+                    list-style: none;
+                    flex-direction: column;
+                    gap: 20px;
+                    transition: display 1s ease-in-out;
+
+                    li:nth-child(1) {
+                        margin-top: 20px;
+                    }
+                }
+
+                /* danh muc cap 2 */
+                ul.sub-menu.show .sub-menu.show {
+                    color: var(--primary-color);
+                }
+            }
+        }
     }
 }
