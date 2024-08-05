@@ -831,9 +831,9 @@ section.menu-container-desktop {
 /* MOBILE MENU SECTION */
 /*  */
 section.menu-container-mobile {
-    .menu-container-slider {
-        display: none;
-    }
+    max-height: 64px;
+
+
 
     .menu-bar-mobile {
         display: flex;
@@ -851,12 +851,45 @@ section.menu-container-mobile {
         font-size: 2.5rem;
         transform: translateY(0);
         transition: transform 0.3s ease-in-out;
-
     }
 
     .menu-bar-icon:hover {
         cursor: pointer;
         transform: translateY(2px);
         transition: transform 0.3s ease-in-out;
+    }
+
+    .menu-bar-logo {
+        display: flex;
+        height: 64px;
+    }
+
+    .menu-overlay {
+        position: absolute;
+        background-color: rgba(14, 13, 13, 0.8);
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: -1;
+    }
+
+    .menu-overlay.active {
+        transform: translateX(0%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .menu-container-slider {
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        background-color: black;
+        width: 80%;
+    }
+
+    .menu-container-slider.active {
+        transform: translateX(0%);
+        transition: transform 0.3s ease-in-out;
+        transition-delay: 0.5s;
+        z-index: 1;
     }
 }

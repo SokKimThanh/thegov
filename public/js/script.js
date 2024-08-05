@@ -140,5 +140,10 @@ menuItems.forEach(item => {
 const menuBarIcon = document.querySelector('.menu-bar-icon');
 
 menuBarIcon.addEventListener('click', () => {
-     const 
+    // tìm thấy menu overlay 
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const menuContainerSlider = document.querySelector('.menu-container-slider')
+    // active menu overlay
+    menuOverlay.classList.add('active');
+    menuContainerSlider.classList.add('active');
 });
