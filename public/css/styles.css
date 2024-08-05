@@ -77,6 +77,7 @@ trọng vào animation và trải nghiệm người dùng. Sự kết hợp củ
 
     --color-1: rgb(97, 97, 97, .8);
     --color-2: #F6F6F6;
+    --min-height-menu-link: 50px;
 }
 
 * {
@@ -472,113 +473,115 @@ section#main-menu {
             }
         }
 
-        /* Cài đặt kiểu dáng khu vực tìm kiếm */
-        .search-container {
-            display: flex;
-            justify-content: end;
-            align-items: center;
-            height: 100%;
-            padding: 0;
-            position: relative;
-            color: black;
 
-            /* cài đặt kiểu dáng nút tìm kiếm */
-            .search-icon {
-                height: 64px;
-                width: 64px;
-                border: none;
-                outline: 0;
-                font-size: 2rem;
-                font-weight: 700;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Nút tìm kiếm khi nhấn vào */
-            .search-icon.active {
-                opacity: 0;
-                transition: all 0.3s ease-in-out;
-            }
-
-
-            /* tạo kiểu dáng cho ô tìm kiếm */
-            .search-area {
-                background-color: white;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-                form {
-                    height: 91px;
-                    width: 309px;
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    input {
-                        height: 50px;
-                        width: 270px;
-                        background-color: var(--color-2);
-                        border: 0;
-                        outline: 0;
-                        border-radius: 0;
-                    }
-                }
-
-                /* cài đặt kiểu dáng nút tìm kiếm và nút tắt ô tìm kiếm  */
-                .btn-search,
-                .btn-x {
-                    height: 64px;
-                    width: 64px;
-                    border: none;
-                    outline: 0;
-                    font-size: 2rem;
-                    font-weight: 700;
-                    cursor: pointer;
-                    position: absolute;
-                }
-
-                /* Nút tắt ô tìm kiếm khi kích hoạt */
-                .btn-x.active {
-                    opacity: 1;
-                    transition: all 0.3s ease-in-out;
-                    display: block;
-                }
-
-                /* Cài đặt kiểu dáng nút tắt ô tìm kiếm */
-                .btn-x {
-                    right: -15px;
-                    top: -60px;
-                    display: none;
-                }
-
-                /* cài đặt kiểu dáng nút tìm kiếm */
-                .btn-search {
-                    right: 0;
-                    margin-right: 10px;
-                }
-            }
-
-            .search-area {
-                position: absolute;
-                transform: translate(-14px, 71px);
-                opacity: 0;
-                transition: all 0.3s ease-in-out;
-            }
-
-            .search-area.show {
-                opacity: 1;
-                transition: all 0.3s ease-in-out;
-            }
-        }
     }
 
-    /* Tạo kiểu cho menu container desktop */
 
 }
 
+/* Cài đặt kiểu dáng khu vực tìm kiếm */
+.search-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    color: black;
 
+    /* cài đặt kiểu dáng nút tìm kiếm */
+    .search-icon {
+        height: 64px;
+        width: 64px;
+        border: none;
+        outline: 0;
+        font-size: 2rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Nút tìm kiếm khi nhấn vào */
+    .search-icon.active {
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    /* tạo kiểu dáng cho ô tìm kiếm */
+    .search-area {
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        form {
+            height: 91px;
+            width: 309px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            input {
+                height: 50px;
+                width: 270px;
+                background-color: var(--color-2);
+                border: 0;
+                outline: 0;
+                border-radius: 0;
+            }
+        }
+
+        /* cài đặt kiểu dáng nút tìm kiếm và nút tắt ô tìm kiếm  */
+        .btn-search,
+        .btn-x {
+            height: 64px;
+            width: 64px;
+            border: none;
+            outline: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        /* Nút tắt ô tìm kiếm khi kích hoạt */
+        .btn-x.active {
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+            display: block;
+        }
+
+        /* Cài đặt kiểu dáng nút tắt ô tìm kiếm */
+        .btn-x {
+            right: -15px;
+            top: -60px;
+            display: none;
+        }
+
+        /* cài đặt kiểu dáng nút tìm kiếm */
+        .btn-search {
+            right: 0;
+            margin-right: 10px;
+        }
+    }
+
+    .search-area {
+        position: absolute;
+        transform: translate(-14px, 71px);
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .search-area.show {
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+        z-index: 1;
+    }
+}
+
+/* Tạo kiểu cho menu container desktop */
 /* MENU DESKTOP CONTAINER */
 /**
 CSS Styling
@@ -651,7 +654,11 @@ section.menu-container-desktop {
                 height: 100%;
                 display: flex;
                 align-items: center;
-                min-height: 64px;
+
+                /* Chiều cao của item cao quá so với màn hình của laptop nên chỉnh lại cho phù hợp */
+                @media screen and (min-width: 1440px) {
+                    min-height: var(--min-height-menu-link);
+                }
 
                 /* Màu mặc định cho các liên kết */
                 a.menu-link {
@@ -688,8 +695,13 @@ section.menu-container-desktop {
                         color: var(--secondary-color);
                         justify-content: space-between;
                         padding: 10px 20px;
-                        height: 64px;
                         align-items: center;
+
+                        /* Chiều cao của item cao quá so với màn hình của laptop nên chỉnh lại cho phù hợp */
+                        @media screen and (min-width: 1440px) {
+                            min-height: var(--min-height-menu-link);
+                        }
+
                     }
 
                     /* 
@@ -812,5 +824,39 @@ section.menu-container-desktop {
                 }
             }
         }
+    }
+}
+
+/*  */
+/* MOBILE MENU SECTION */
+/*  */
+section.menu-container-mobile {
+    .menu-container-slider {
+        display: none;
+    }
+
+    .menu-bar-mobile {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .btn-x,
+    .search-icon {
+        color: white;
+    }
+
+    /* Kiểu dáng cho nút mở menu bar  */
+    .menu-bar-icon {
+        font-size: 2.5rem;
+        transform: translateY(0);
+        transition: transform 0.3s ease-in-out;
+
+    }
+
+    .menu-bar-icon:hover {
+        cursor: pointer;
+        transform: translateY(2px);
+        transition: transform 0.3s ease-in-out;
     }
 }

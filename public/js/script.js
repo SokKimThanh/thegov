@@ -20,39 +20,44 @@ $('.owl-carousel').owlCarousel({
 })
 
 /**
- * Tạo kiểu cho search-container
+ * Tạo kiểu cho search-container (3 chỗ )
  */
+const searchContainer = document.querySelectorAll('.search-container');
+searchContainer.forEach(container => {
+    const searchArea = container.querySelector('.search-area');
+    const searchIcon = container.querySelector('.search-icon');
+    const searchX = searchArea.querySelector('.btn-x');
 
+    searchIcon.addEventListener('click', () => {
+        const searchInput = searchArea.querySelectorAll('.search-input');
+        searchX.addEventListener('click', () => {
+            searchArea.classList.remove('show');
+            searchIcon.classList.remove('active');
+            searchX.classList.remove('active');
+        });
+        searchArea.classList.add('show');
+        searchIcon.classList.add('active');
+        searchX.classList.add('active');
+        searchInput.addEventListener('focus', () => {
+            searchInput.removeAttribute('placeholder');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.setAttribute('placeholder', 'Tìm kiếm');
+        });
+    });
 
-const searchContainer = document.querySelector('.search-container');
-const searchArea = searchContainer.querySelector('.search-area');
-const searchIcon = searchContainer.querySelector('.search-icon');
-const searchX = searchArea.querySelector('.btn-x');
+    /**
+     * slider-revolution
+     * Đụng vào slider sẽ tắt search
+     */
+    const sliderRevolution = document.querySelector('#slider-revolution');
+    sliderRevolution.addEventListener('click', () => {
+        if (searchX) {
+            searchX.click();
+        }
+    })
 
-searchIcon.addEventListener('click', () => {
-    const searchInput = searchArea.querySelector('.search-input');
-    searchX.addEventListener('click', () => {
-        searchArea.classList.remove('show');
-        searchIcon.classList.remove('active');
-        searchX.classList.remove('active');
-    });
-    searchArea.classList.add('show');
-    searchIcon.classList.add('active');
-    searchX.classList.add('active');
-    searchInput.addEventListener('focus', () => {
-        searchInput.removeAttribute('placeholder');
-    });
-    searchInput.addEventListener('blur', () => {
-        searchInput.setAttribute('placeholder', 'Tìm kiếm');
-    });
 });
-
-const sliderRevolution = document.querySelector('#slider-revolution');
-sliderRevolution.addEventListener('click', () => {
-    if (searchX) {
-        searchX.click();
-    }
-})
 
 // MENU DESKTOP
 /**
@@ -125,4 +130,15 @@ menuItems.forEach(item => {
             subMenu.classList.remove('show');
         }
     });
+});
+
+
+/**
+ * Lập trình tắt/mở menu mobile (menu-bar-icon)
+ */
+
+const menuBarIcon = document.querySelector('.menu-bar-icon');
+
+menuBarIcon.addEventListener('click', () => {
+     const 
 });
