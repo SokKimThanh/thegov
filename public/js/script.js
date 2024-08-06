@@ -122,17 +122,22 @@ menuItems.forEach(item => {
         }
     });
 
-    item.addEventListener('mouseenter', () => {
-        if (subMenu) {
-            subMenu.classList.add('show');
-        }
-    });
+    // Xử lý sự kiện hover: Hiển thị sub-menu khi hover vào mục menu
+    // ở trên mobile thì không có hover
+    // ở trên desktop thì có hover
+    if (window.innerWidth > 1024) {
+        item.addEventListener('mouseenter', () => {
+            if (subMenu) {
+                subMenu.classList.add('show');
+            }
+        });
 
-    item.addEventListener('mouseleave', () => {
-        if (subMenu) {
-            subMenu.classList.remove('show');
-        }
-    });
+        item.addEventListener('mouseleave', () => {
+            if (subMenu) {
+                subMenu.classList.remove('show');
+            }
+        });
+    }
 });
 
 
@@ -141,18 +146,37 @@ menuItems.forEach(item => {
  * Lập trình tắt/mở menu mobile (menu-bar-icon)
  */
 
+// Chọn phần tử có lớp 'menu-bar-icon' từ DOM
 const menuBarIcon = document.querySelector('.menu-bar-icon');
 
+// Thiết lập sự kiện click cho 'menuBarIcon'
 menuBarIcon.addEventListener('click', () => {
-    // tìm thấy menu overlay 
+    // Chọn phần tử có lớp 'menu-overlay' từ DOM
     const menuOverlay = document.querySelector('.menu-overlay');
+    // Chọn phần tử có lớp 'menu-container-slider' từ DOM
     const menuContainerSlider = document.querySelector('.menu-container-slider');
+    // Chọn phần tử con có lớp 'search-container' từ 'menuContainerSlider'
+    const searchContainer = menuContainerSlider.querySelector('.search-container');
 
-    // active menu overlay
+    // Thêm lớp 'active' vào 'menuOverlay' để hiển thị overlay
     menuOverlay.classList.add('active');
+    // Thêm lớp 'active' vào 'menuContainerSlider' để hiển thị menu slider
     menuContainerSlider.classList.add('active');
-    menuOverlay.addEventListener('click', ()=>{
+
+    // Thiết lập sự kiện click cho 'menuOverlay'
+    menuOverlay.addEventListener('click', () => {
+        // Loại bỏ lớp 'active' từ 'menuOverlay' để ẩn overlay
         menuOverlay.classList.remove('active');
+        // Loại bỏ lớp 'active' từ 'menuContainerSlider' để ẩn menu slider
         menuContainerSlider.classList.remove('active');
     });
+
+    // Hiển thị phần tử 'searchContainer' bằng cách đặt thuộc tính display thành 'block'
+    searchContainer.style.display = 'block';
 });
+
+
+
+//
+/* section vfo */
+// 

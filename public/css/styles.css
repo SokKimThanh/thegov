@@ -69,6 +69,7 @@ trọng vào animation và trải nghiệm người dùng. Sự kết hợp củ
     --primary-font-family: "Nunito", sans-serif;
     --primary-color: #00AA55;
     --secondary-color: #010101;
+    --thirdary-color: #F4F6F6;
     --backgroung-1: #232323;
     --background-2: #313131;
     --background-3: rgba(217, 217, 217, 0.5);
@@ -78,6 +79,7 @@ trọng vào animation và trải nghiệm người dùng. Sự kết hợp củ
     --color-1: rgb(97, 97, 97, .8);
     --color-2: #F6F6F6;
     --min-height-menu-link: 64px;
+    --box-shadow-gach-chan: 10px 0px 0 0 currentColor, 20px 0px 0 0 currentColor, 30px 0px 0 0 currentColor, 50px 0px 0 0 currentColor;
 }
 
 * {
@@ -96,6 +98,8 @@ body {
 body {
     font-size: 14px;
     font-family: var(--primary-font-family);
+    background-color: var(--thirdary-color);
+    /* mặc định màu cho body, section màu khác thì đổi ở section */
 }
 
 @keyframes fadeInDown {
@@ -108,7 +112,6 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 @keyframes fadeIn {
@@ -989,6 +992,363 @@ section.menu-container-mobile {
                     color: var(--primary-color);
                 }
             }
+        }
+    }
+}
+
+/*  */
+/* SIX BOX SECTION */
+/*  */
+/**
+Phần "six-box":
+
+Các mục (.box-item) có nền trắng, đệm 20px, và các kiểu dáng khác để hiển thị 
+linh hoạt.
+Có hiệu ứng hover để thay đổi vị trí và màu nền của các mục.
+*/
+section#six-box {
+    padding-bottom: 120px;
+
+    /* Tạo kiểu dáng cho box-item */
+    .box-item {
+        background-color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        transform: translateY(0);
+        transition: transform 0.3s ease-in-out;
+        /* box-shadow: hoffset voffset blur spread color; */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        min-height: 188px;
+        cursor: pointer;
+        /* ---------------------------- */
+        /* giúp nổi bật ô này lên trên */
+        /* ---------------------------- */
+        margin-top: -70px;
+        position: relative;
+        z-index: 1;
+
+        /* ---------------------------- */
+        @media screen and (max-width: 1024px) {
+            margin-top: 8px;
+            /* cho nó về lại như cũ để hiện thị 2 item 1 hàng */
+        }
+    }
+
+    /* thay đổi màu khi hover box-item*/
+    .box-item:hover {
+        transform: translateY(-20px);
+        transition: transform 0.3s ease-in-out;
+        background-color: var(--primary-color);
+        color: white;
+
+        .box-icon {
+            color: white;
+        }
+    }
+
+    /* Tạo kiểu dáng thành phần bên trong box item */
+    .box-item {
+        .box-icon {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+        }
+
+        /*  */
+        .box-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    }
+}
+
+/*  */
+/* SECTION AGA */
+/*  */
+/**
+Phần "aga":
+
+Các mục có tiêu đề lớn hơn và các hiệu ứng hover cho tiêu đề.
+Các mục có thể có dấu ấn lớn (.box-mark) phía sau tiêu đề.
+*/
+section#aga {
+    .box-item:hover {
+        .box-title {
+            color: var(--primary-color);
+            transition: color 0.3s ease-in-out;
+        }
+    }
+
+    .box-item {
+        position: relative;
+
+        .box-mark {
+            position: absolute;
+            color: white;
+            font-size: 6rem;
+            font-weight: 700;
+            z-index: -1;
+            top: -70px;
+            left: -30px;
+        }
+
+        .box-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+
+            transition: color 0.3s ease-in-out;
+        }
+
+        .box-title::after {
+            position: absolute;
+            box-shadow: var(--box-shadow-gach-chan);
+        }
+
+        .box-text {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5rem;
+            color: rgba(0, 0, 0, 0.7);
+            /* Giới hạn 3 dòng */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .box-link {
+            display: flex;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .box-link::after {
+            content: '\F138';
+            font-family: 'bootstrap-icons';
+            margin-left: 8px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 5px solid var(--primary-color);
+            width: 60px;
+        }
+    }
+}
+
+/*  */
+/* section vfo */
+/*  */
+/*
+Phần "vfo":
+
+Các mục có lớp phủ và hiệu ứng ẩn/hiện khi hoạt động.
+Tiêu đề, văn bản và đường kẻ (hr) có các hiệu ứng chuyển đổi.
+*/
+section#vfo {
+    padding-top: 110px;
+    padding-bottom: 140px;
+
+    .box-item {
+        padding: 0;
+        position: relative;
+
+        .box-overlay {
+            position: absolute;
+            inset: 0;
+            background: transparent;
+        }
+
+        .box-overlay.active {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .box-hide {
+            position: absolute;
+            bottom: 0;
+            overflow: hidden;
+            padding-left: 32px;
+            padding-bottom: 32px;
+
+            hr {
+                margin: 20px 0;
+                border: none;
+                border-top: 5px solid var(--primary-color);
+                width: 60px;
+                transform: translateY(80px);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            hr.active {
+                transform: translateY(0);
+            }
+
+            .box-text-hide {
+                overflow-y: hidden;
+
+                .box-title {
+                    text-transform: capitalize;
+                    color: white;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-bottom: 32px;
+                    transform: translateY(80px);
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                .box-title.active {
+                    transform: translateY(0);
+                }
+
+                .box-text {
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.5rem;
+                    color: white;
+                    /* Giới hạn 3 dòng */
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    transform: translateY(130px);
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                .box-text.active {
+                    transform: translateY(0);
+                }
+            }
+
+            .box-button {
+                margin: 20px 0;
+                color: white;
+                padding: 20px;
+                text-decoration: none;
+                text-transform: uppercase;
+                border-radius: 50%;
+                background: transparent;
+                height: 32px;
+                width: 32px;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                border: 1px solid white;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .box-button:hover {
+                background-color: white;
+                color: var(--primary-color);
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+}
+/*  */
+/* ypss section */
+/* Phần "ypss":
+
+Mục tiêu để hiển thị các mục với số thứ tự và tiêu đề.
+Các mục có nền hình ảnh và bóng đổ. */
+section#ypss {
+    background-color: white;
+    padding: 80px 100px;
+
+    .container {
+        margin-top: -170px;
+        background-image: url(../images/drawing-city-with-city-skyline-background_1064589-307442.jpg);
+        background-size: contain;
+        background-position: top;
+        /* background-repeat: no-repeat; */
+        padding: 80px 100px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .box-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        .box-number {
+            font-size: 3rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, .5);
+            margin: 0;
+        }
+
+        .box-title {
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, .5);
+            margin: 0;
+        }
+    }
+}
+ 
+/*  */
+/* meet section */
+/* Phần "meet":
+
+Các mục có đường kẻ, văn bản giới hạn dòng, và liên kết kiểu dáng. */
+section#meet {
+    padding-top: 120px;
+    background-color: #fff;
+
+    .box-item {
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 5px solid var(--primary-color);
+            width: 60px;
+        }
+
+        .box-text {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5rem;
+            /* Giới hạn 3 dòng */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .box-title {
+            text-transform: capitalize;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .box-link {
+            display: flex;
+            height: 50px;
+            width: 140px;
+            border-radius: 32px;
+            background: black;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 700;
         }
     }
 }
