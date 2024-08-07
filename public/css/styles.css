@@ -1256,6 +1256,7 @@ section#vfo {
         }
     }
 }
+
 /*  */
 /* ypss section */
 /* Phần "ypss":
@@ -1300,7 +1301,7 @@ section#ypss {
         }
     }
 }
- 
+
 /*  */
 /* meet section */
 /* Phần "meet":
@@ -1308,9 +1309,11 @@ section#ypss {
 Các mục có đường kẻ, văn bản giới hạn dòng, và liên kết kiểu dáng. */
 section#meet {
     padding-top: 120px;
+    padding-bottom: 420px;
     background-color: #fff;
 
     .box-item {
+
         hr {
             margin: 20px 0;
             border: none;
@@ -1350,5 +1353,306 @@ section#meet {
             text-transform: uppercase;
             font-weight: 700;
         }
+    }
+}
+
+
+section#halini-slider {
+    padding-bottom: 120px;
+
+    .container {
+        margin-top: -270px;
+        background-color: #1BAB58;
+    }
+
+    .owl-stage {
+        display: flex;
+        align-items: center;
+        min-height: 300px;
+    }
+
+    .owl-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        .owl-dot {
+
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            span {
+                background-color: white;
+                height: 4px;
+                width: 4px;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background 0.3s ease-in-out;
+            }
+        }
+
+        .owl-dot.active {
+            border: 1px solid white;
+            padding: 5px;
+        }
+    }
+
+    .box-slider {
+        padding: 80px;
+
+        .box-item {
+            height: 100% !important;
+            padding: 8px;
+
+            .box-author {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                .author-image {
+                    height: 86px;
+                    width: 86px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .author-info {
+                    color: white;
+
+                    .author-name {
+                        text-transform: capitalize;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    .author-description {
+                        text-transform: uppercase;
+                        font-size: 0.9rem;
+                        font-weight: 400;
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+            }
+
+            .box-content {
+                color: white;
+                font-size: 1rem;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+section#upcomming {
+    padding-bottom: 120px;
+
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 5px solid var(--primary-color);
+            width: 60px;
+        }
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .filters {
+        text-align: start;
+        margin-bottom: 20px;
+    }
+
+    .filter {
+        text-transform: uppercase;
+        display: inline-block;
+        margin: 0 10px;
+        padding: 10px 20px;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: 700;
+    }
+
+    .filter.active,
+    .filter:hover {
+        color: var(--primary-color);
+    }
+
+    .events {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+    }
+
+    .event:hover {
+        background-color: #01010194;
+        transition: background 0.3s ease-in-out;
+        color: white;
+
+        .event-info {
+
+            .date,
+            .location {
+                color: white;
+            }
+        }
+    }
+
+    .event {
+        background-color: #fff;
+        margin: 10px;
+        padding: 20px;
+        width: 300px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        /* Initially hide all events */
+        transition: background 0.3s ease-in-out;
+    }
+
+    .event-tag {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .event-info h2 {
+        margin: 10px 0;
+    }
+
+    .event-info .date,
+    .event-info .location {
+        color: #777;
+    }
+
+    .navigation {
+        text-align: end;
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #28a745;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 0 5px;
+    }
+
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+}
+
+/*  */
+/* Section partner */
+/*  */
+/* *{
+    border: 1px solid red;
+} */
+section#partner {
+    padding: 120px 0;
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .item {
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .item:hover {
+            cursor: pointer;
+            transform: perspective(1000px) rotateX(360deg);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+}
+
+section#museum-video {
+    background: url('../images/section-bg-1.jpg') no-repeat center center;
+
+    background-size: cover;
+    padding: 180px 0;
+    text-align: center;
+    color: white;
+
+    h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        text-wrap: balance;
+    }
+
+    p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        font-weight: 400;
+    }
+
+    .wave {
+        background: var(--primary-color);
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: auto;
+        z-index: 1;
+        cursor: pointer;
+        margin-top: 32px;
+    }
+
+    .wave::after {
+        content: "";
+        background: #00aa555c;
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        animation: wave 1.1s infinite alternate;
+        /* Thêm hiệu ứng đảo chiều alternate */
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        z-index: -1;
+    }
+
+}
+
+@keyframes wave {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
     }
 }
