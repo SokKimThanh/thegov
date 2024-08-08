@@ -1764,11 +1764,11 @@ section#publications {
     }
 }
 
-* {
-    /* border: 1px solid red; */
-}
-
+/*  */
 /* finally footer */
+/* Mã CSS này tổ chức footer thành các phần con như "stay-connected", 
+"info-container", "service-request-map-copyright", và "service-request-map", 
+mỗi phần có thiết lập riêng biệt tương ứng với nội dung và kiểu dáng mong muốn. */
 footer {
     background-color: #1A1A1A;
     padding: 120px 0 0 0;
@@ -1844,8 +1844,9 @@ footer {
                 font-weight: 600;
                 color: rgba(255, 255, 255, 0.7);
                 cursor: pointer;
-                span.bi{
-                    color:var(--primary-color);
+
+                span.bi {
+                    color: var(--primary-color);
                 }
             }
 
@@ -1861,46 +1862,59 @@ footer {
         justify-content: space-between;
         flex-direction: column;
         padding-left: 40px;
-    }
 
-    .service-request-map {
-        padding-top: 40px;
-
-        display: flex;
-
-        align-items: start;
-
-
-        .service-request {
-            h6 {
-                font-size: 1.1rem;
-                font-weight: 700;
-                margin-bottom: 40px;
-
+        @media (max-width: 500px) {
+            .service-request-map {
+                flex-direction: column !important;
             }
+        }
 
-            .info-list {
-                padding: 0;
-                list-style-type: none;
+        .service-request-map {
 
-                li {
-                    margin-bottom: 20px;
-                    font-size: 1rem;
-                    font-weight: 600;
-                    color: rgba(255, 255, 255, 0.7);
-                    cursor: pointer;
+            padding-top: 40px;
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+
+
+            .service-request {
+                h6 {
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    margin-bottom: 40px;
+
                 }
 
-                li:hover {
-                    color: var(--primary-color);
+                iframe {
+                    @media screen and (max-width: 768px) {
+                        width: 100%;
+                    }
+                }
+
+                .info-list {
+                    padding: 0;
+                    list-style-type: none;
+
+                    li {
+                        margin-bottom: 20px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: rgba(255, 255, 255, 0.7);
+                        cursor: pointer;
+                    }
+
+                    li:hover {
+                        color: var(--primary-color);
+                    }
                 }
             }
         }
+
+        .copyright {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+        }
     }
 
-    .copyright {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.5);
-        font-weight: 400;
-    }
 }
