@@ -1169,8 +1169,14 @@ section#vfo {
             background: transparent;
         }
 
+        .box-overlay {
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
         .box-overlay.active {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease-in-out;
         }
 
         .box-hide {
@@ -1269,10 +1275,10 @@ section#ypss {
 
     .container {
         margin-top: -170px;
-        background-image: url(../images/drawing-city-with-city-skyline-background_1064589-307442.jpg);
-        background-size: contain;
-        background-position: top;
-        /* background-repeat: no-repeat; */
+        background-image: url(../images/counters_bg.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         padding: 80px 100px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     }
@@ -1299,7 +1305,11 @@ section#ypss {
             background-color: rgba(255, 255, 255, .5);
             margin: 0;
         }
+
+
     }
+
+
 }
 
 /*  */
@@ -1353,9 +1363,33 @@ section#meet {
             text-transform: uppercase;
             font-weight: 700;
         }
+
+        .box-image:nth-child(1) {
+            transform: translateX(250px);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .box-image:nth-child(1).active {
+            transform: translateX(0);
+            transition: all 0.5s ease-in-out;
+            transition-delay: 1s;
+        }
+
+        .box-image:nth-child(2) {
+            transform: translateY(-350px);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .box-image:nth-child(2).active {
+            transform: translateY(0);
+            transition: all 0.5s ease-in-out;
+            transition-delay: 1.4s;
+        }
     }
 }
-
+.hiding{
+    opacity: 0;
+}
 
 section#halini-slider {
     padding-bottom: 120px;
@@ -1658,6 +1692,14 @@ section#museum-video {
     }
 }
 
+/*  */
+/* section publications */
+/* 
+Đoạn mã CSS này định dạng phần "publications" và các thẻ "card" bên trong nó, 
+bao gồm các tiêu đề, hình ảnh, nhãn, và thông tin tác giả/ngày tháng. 
+Mỗi phần tử có các hiệu ứng hover để tạo ra trải nghiệm người dùng 
+mượt mà và hấp dẫn.
+ */
 section#publications {
     padding: 120px 0;
     background-color: #FFFFFF;
