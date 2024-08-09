@@ -1367,7 +1367,7 @@ section#meet {
         .box-image:nth-child(1) {
             transform: translateX(150px);
             transition: all 0.5s ease-in-out;
-            
+
         }
 
         .box-image:nth-child(1).active {
@@ -1386,6 +1386,8 @@ section#meet {
             transition: all 0.5s ease-in-out;
             transition-delay: 1.4s;
         }
+
+        /* lập trình ở đây cho nó tắt luôn css để nó không văng ra khoảng trắng */
         @media screen and (max-width: 1024px) {
             .box-image:nth-child(1) {
                 transform: translateX(10px);
@@ -1394,7 +1396,7 @@ section#meet {
             .box-image:nth-child(2) {
                 transform: translateY(-25px);
             }
-            
+
         }
     }
 }
@@ -1889,9 +1891,11 @@ footer {
         display: flex;
         flex-direction: column;
         justify-content: center;
+
         @media screen and (max-width: 500px) {
             padding: 20px;
         }
+
         .info-text {
             font-size: 1.1rem;
             font-weight: 700;
