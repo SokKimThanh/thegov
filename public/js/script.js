@@ -345,7 +345,7 @@ const boxImages = sectionMeet.querySelectorAll('.box-image');
 const offsetTop = sectionMeet.offsetTop;
 
 // Thêm sự kiện lắng nghe khi cuộn trang
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => { 
     // Tính toán vị trí hiện tại của cửa sổ so với đỉnh trang
     const scrollPosition = window.scrollY + window.innerHeight;
 
@@ -364,9 +364,4 @@ window.addEventListener('scroll', () => {
             image.classList.remove('active');
         });
     }
-});
-
-window.addEventListener('scroll', () => {
-    const scroll = window.scrollY + window.innerHeight;
-
-});
+}); 

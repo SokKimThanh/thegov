@@ -1875,8 +1875,6 @@ footer {
     .info-container {
         background-color: #232323;
         padding: 80px;
-        height: 400px;
-        width: 400px;
         display: flex;
         flex-direction: column;
         justify-content: center;
