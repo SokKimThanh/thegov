@@ -344,24 +344,27 @@ const boxImages = sectionMeet.querySelectorAll('.box-image');
 // Tính toán vị trí offset từ đầu trang cho phần tử #meet
 const offsetTop = sectionMeet.offsetTop;
 
-// Thêm sự kiện lắng nghe khi cuộn trang
-window.addEventListener('scroll', () => { 
-    // Tính toán vị trí hiện tại của cửa sổ so với đỉnh trang
-    const scrollPosition = window.scrollY + window.innerHeight;
 
-    // Kiểm tra nếu vị trí hiện tại lớn hơn vị trí offset của phần
-    //  tử #meet
-    if (scrollPosition > offsetTop) {
-        // Thực hiện các hành động bạn muốn khi điều kiện được đáp ứng
-        // Ví dụ: thêm class active cho các phần tử box-image
-        boxImages.forEach(image => {
-            image.classList.add('active');
-        });
-    } else {
-        // Nếu không đáp ứng điều kiện, có thể xóa class active hoặc 
-        // làm gì đó khác
-        boxImages.forEach(image => {
-            image.classList.remove('active');
-        });
+// Thêm sự kiện lắng nghe khi cuộn trang
+window.addEventListener('scroll', () => {
+    if (window.innerWidth > 500) {
+        // Tính toán vị trí hiện tại của cửa sổ so với đỉnh trang
+        const scrollPosition = window.scrollY + window.innerHeight;
+
+        // Kiểm tra nếu vị trí hiện tại lớn hơn vị trí offset của phần
+        //  tử #meet
+        if (scrollPosition > offsetTop) {
+            // Thực hiện các hành động bạn muốn khi điều kiện được đáp ứng
+            // Ví dụ: thêm class active cho các phần tử box-image
+            boxImages.forEach(image => {
+                image.classList.add('active');
+            });
+        } else {
+            // Nếu không đáp ứng điều kiện, có thể xóa class active hoặc 
+            // làm gì đó khác
+            boxImages.forEach(image => {
+                image.classList.remove('active');
+            });
+        }
     }
 }); 
