@@ -71,7 +71,7 @@ trọng vào animation và trải nghiệm người dùng. Sự kết hợp củ
     --secondary-color: #010101;
     --thirdary-color: #F4F6F6;
     --backgroung-1: #232323;
-    --background-2: #313131;
+    --background-2: #232323;
     --background-3: rgba(217, 217, 217, 0.5);
     --background-4: #F7F7F7;
     --background-5: #e5e5e5e5;
@@ -1367,6 +1367,7 @@ section#meet {
         .box-image:nth-child(1) {
             transform: translateX(150px);
             transition: all 0.5s ease-in-out;
+            
         }
 
         .box-image:nth-child(1).active {
@@ -1384,6 +1385,16 @@ section#meet {
             transform: translateY(0);
             transition: all 0.5s ease-in-out;
             transition-delay: 1.4s;
+        }
+        @media screen and (max-width: 1024px) {
+            .box-image:nth-child(1) {
+                transform: translateX(10px);
+            }
+
+            .box-image:nth-child(2) {
+                transform: translateY(-25px);
+            }
+            
         }
     }
 }
@@ -1878,7 +1889,9 @@ footer {
         display: flex;
         flex-direction: column;
         justify-content: center;
-
+        @media screen and (max-width: 500px) {
+            padding: 20px;
+        }
         .info-text {
             font-size: 1.1rem;
             font-weight: 700;
